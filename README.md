@@ -29,36 +29,81 @@
 
 ## Installation
 
-### Prérequis
+> **Recommandé : `pipx`** — installe l'app dans un environnement isolé automatique,
+> conformément aux recommandations PEP 668 / `externally-managed-environment`.
+
+### 1. Installer pipx
 
 ```bash
 # Arch Linux / Manjaro
-sudo pacman -S python-pyqt6 python-pip
+sudo pacman -S python-pipx
 
-# Debian/Ubuntu/Mint
-sudo apt install python3-pip python3-pyqt6
+# Debian/Ubuntu/Mint (≥ 23.04)
+sudo apt install pipx
 
-# Fedora/RHEL
-sudo dnf install python3-pyqt6 python3-pip
+# Fedora
+sudo dnf install pipx
 
-# ou via pip dans un venv (toutes distros)
-pip install PyQt6
+# Toutes distros (via pip utilisateur)
+pip install --user pipx
+pipx ensurepath          # ajoute ~/.local/bin au PATH, puis relancer le shell
 ```
 
-### Lancement direct
+### 2. Installer Clock X Overlay via pipx
+
+```bash
+pipx install git+https://github.com/dewiweb/clock_X_overlay.git
+clock-x-overlay
+```
+
+Pour mettre à jour :
+
+```bash
+pipx upgrade clock-x-overlay
+```
+
+Pour désinstaller :
+
+```bash
+pipx uninstall clock-x-overlay
+```
+
+---
+
+### Alternative : venv manuel
+
+Si tu préfères travailler depuis les sources :
 
 ```bash
 git clone https://github.com/dewiweb/clock_X_overlay.git
 cd clock_X_overlay
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 python run.py
 ```
 
-### Installation système (pip)
+### Alternative : packages système (sans isolation)
+
+Les packages système fournissent PyQt6 nativement — aucun venv requis :
 
 ```bash
-pip install -e .
-clock-x-overlay
+# Arch Linux / Manjaro
+sudo pacman -S python-pyqt6
+
+# Debian/Ubuntu/Mint
+sudo apt install python3-pyqt6
+
+# Fedora
+sudo dnf install python3-pyqt6
+```
+
+Puis lancer directement :
+
+```bash
+git clone https://github.com/dewiweb/clock_X_overlay.git
+cd clock_X_overlay
+python run.py
 ```
 
 ### Démarrage automatique
