@@ -32,10 +32,16 @@
 ### Prérequis
 
 ```bash
+# Arch Linux / Manjaro
+sudo pacman -S python-pyqt6 python-pip
+
 # Debian/Ubuntu/Mint
 sudo apt install python3-pip python3-pyqt6
 
-# ou via pip dans un venv
+# Fedora/RHEL
+sudo dnf install python3-pyqt6 python3-pip
+
+# ou via pip dans un venv (toutes distros)
 pip install PyQt6
 ```
 
